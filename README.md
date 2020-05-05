@@ -1,7 +1,8 @@
 # Definiton
 	nginx is modernEra web server,vhost,reverse proxy,load balancer with highest performance.
-
+	
 #Topic to be cover
+----------------
 	1. installation guide
 	2. directory structure
 	3. command to start/stop/reload/
@@ -10,39 +11,36 @@
 	6. reverse proxy concept ( hiding main site with domain)
 	7. load balacing concept ( to improve performance using upstream directive)
 
-
-----------------------------
 #installation guide
- 	#1) if OS is OpenSuse Linux 
-	
+---------------------
+
+#1) if OS is OpenSuse Linux 
+------------------------------	
 	1) zypper seach nginx      (for searching)
 	2) sudo zypper install nginx	(for installing)
 	3) which nginx or sudo which nginx	(for verifying)
 	root conf file diectory is : /etc/nginx  and root conf file is - /etc/nginx/nginx.conf
-
-
 	/etc/nginx  contain following important dir
-		conf.d/   			( almost with evry os)  		(basically contain conf file with .conf extension)
-		vhost.d/  			( with some OS like opensuse) (basically contain conf file with .conf extension)
-		sites-available/ ( with some OS like ubuntu) 	( basically contain conf file without extension)
-		sites-enabled/   ( with some OS like ubuntu)  	( basically contain softlink of sites-available files)
+	conf.d/   	( almost with evry os)  (basically contain conf file with .conf extension)
+	vhost.d/  	( with some OS like opensuse) (basically contain conf file with .conf extension)
+	sites-available/ ( with some OS like ubuntu) 	( basically contain conf file without extension)
+	sites-enabled/   ( with some OS like ubuntu)  	( basically contain softlink of sites-available files)
 		
-		Notes: if you open /etc/nginx/nginx.conf you will association with above dir files
+	Notes: if you open /etc/nginx/nginx.conf you will association with above dir files
  
 
 	contain following 2 main block
 	1) events
 	example:
-				events {
-			    worker_connections  1024;
-			    use epoll;
-				}
+	events {
+	 worker_connections  1024;
+	use epoll;
+	}
 				
 	
 	2) http	
 	example:
-	
-			http {
+	http {
 		    include       mime.types;
 		    default_type  application/octet-stream;
 		
@@ -67,7 +65,7 @@
 		        }
 		       
 		
-				error_page  404              /404.html;
+			error_page  404              /404.html;
 		        error_page   500 502 503 504  /50x.html;
 		        location = /50x.html {
 		            root   /srv/www/htdocs/;
